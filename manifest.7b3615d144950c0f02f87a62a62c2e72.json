@@ -1,0 +1,41 @@
+{
+  "icons": [
+    {
+      "src": "icon_512x512.45c524261ff51fc97fa80326aa743b47.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_384x384.382d6c330aed7d0e59930748ac9d7c69.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_256x256.794ae42a14d008c2670210063c34de4f.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_192x192.e3ed085638a9e740d4be09d5767ee264.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_128x128.8ae3edfbeb085b8321a3b6402f71c9ae.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_96x96.be827c3c145ccaa6626049092ed9b73b.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Jesper in Japan",
+  "short_name": "JiJ",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "Jespers travel blog",
+  "background_color": "#ffffff"
+}
