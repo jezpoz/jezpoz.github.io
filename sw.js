@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.4920e98b5fd1352a0eaa3f66b9bf9cab.js"
+  "precache-manifest.de91a12da9cec546884d68d7f567f476.js"
 );
 
 workbox.core.skipWaiting();
@@ -29,4 +29,5 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/https:\/\/(.*).api.sanity.io/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/\/images\//, new workbox.strategies.CacheFirst(), 'GET');
+workbox.routing.registerRoute(/\/data\/query\//, new workbox.strategies.StaleWhileRevalidate(), 'GET');
