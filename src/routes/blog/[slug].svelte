@@ -1,20 +1,43 @@
 <script context="module">
-	export async function preload({ params }) {
-		// the `slug` parameter is available because
-		// this file is called [slug].svelte
-		const res = await this.fetch(`blog/${params.slug}.json`);
-		const data = await res.json();
+  export async function preload({ params }) {
+    const { slug } = params;
+    const res = await this.fetch(`/blog/${slug}.json`);
+    const post = await res.json();
 
-		if (res.status === 200) {
-			return { post: data };
-		} else {
-			this.error(res.status, data.message);
-		}
-	}
+    return {
+      post,
+    }
+  }
 </script>
 
 <script>
-	export let post;
+  import blocksToHtml from '@sanity/block-content-to-html';
+
+  export let post;
+
+  let content = null;
+
+  if (!!post.body) {
+    const h = blocksToHtml.h
+
+    const serializers = {
+      types: {
+        code: props => (
+          h('pre', {className: props.node.language},
+            h('code', props.node.code)
+          )
+        )
+      }
+    }
+
+    content = blocksToHtml({
+      projectId: 'r7xgkr2j',
+      dataset: 'production',
+      blocks: post.body,
+      serializers,
+    });
+  }
+  
 </script>
 
 <style>
@@ -58,7 +81,6 @@
 </svelte:head>
 
 <h1>{post.title}</h1>
-
 <div class="content">
-	{@html post.html}
+  {@html content}
 </div>

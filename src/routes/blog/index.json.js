@@ -1,16 +1,21 @@
-import posts from './_posts.js';
+import sanityClient from '../../source/sanity';
 
-const contents = JSON.stringify(posts.map(post => {
-	return {
-		title: post.title,
-		slug: post.slug
-	};
-}));
-
-export function get(req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	});
-
-	res.end(contents);
+export async function get(req, res) {
+  try {
+		const posts = await sanityClient.fetch('*[_type == "post"]{title, slug}');
+    if (posts) {
+      res.writeHead(200);
+      res.end(JSON.stringify(posts));
+      return;
+    }
+    res.writeHead(404);
+		res.end(JSON.stringify({
+			message: 'No posts found',
+		}));
+  } catch (err) {
+    res.writeHead(500);
+    res.end(JSON.stringify({
+      message: 'Something went wrong, we\'re sorry. :c'
+    }))
+  }
 }

@@ -1,28 +1,42 @@
-import posts from './_posts.js';
+import sanityClient from '../../source/sanity';
 
-const lookup = new Map();
-posts.forEach(post => {
-	lookup.set(post.slug, JSON.stringify(post));
-});
+export async function get(req, res, next) {
+	try {
+		const { slug } = req.params;
 
-export function get(req, res, next) {
-	// the `slug` parameter is available because
-	// this file is called [slug].json.js
-	const { slug } = req.params;
+		if (!slug) {
+			res.writeHead(400, {
+				'Content-Type': 'application/json'
+			});
+			res.end(JSON.stringify({
+				message: 'parameter slug is required'
+			}));
+			return;
+		}
 
-	if (lookup.has(slug)) {
+		const post = await sanityClient.fetch('*[_type == "post" && slug.current == $slug][0]', { slug });
+
+		if (!post) {
+			res.writeHead(404, {
+				'Content-Type': 'application/json'
+			});
+			res.end(JSON.stringify({
+				message: 'not found'
+			}));
+			return;
+		}
+
 		res.writeHead(200, {
 			'Content-Type': 'application/json'
 		});
-
-		res.end(lookup.get(slug));
-	} else {
-		res.writeHead(404, {
+		res.end(JSON.stringify(post));
+	} catch (err) {
+		res.writeHead(500, {
 			'Content-Type': 'application/json'
 		});
-
 		res.end(JSON.stringify({
-			message: `Not found`
+			message: 'something went wrong',
+			err,
 		}));
 	}
 }
