@@ -9,10 +9,6 @@ on:
 
 jobs:
   build:
-    env:
-      SANITY_PROJECT_ID: ${{ jezpoz-github-page.SANITY_PROJECT_ID }}
-      SANITY_DATASET: ${{ jezpoz-github-page.SANITY_DATASET }}
-      SANITY_READ_TOKEN: ${{ jezpoz-github-page.SANITY_READ_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -20,3 +16,6 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           working-dir: ./web
+          SANITY_PROJECT_ID: ${{ env.jezpoz-github-page.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ env.jezpoz-github-page.SANITY_DATASET }}
+          SANITY_READ_TOKEN: ${{ env.jezpoz-github-page.SANITY_READ_TOKEN }}
