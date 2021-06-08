@@ -5,10 +5,7 @@ on:
     branches:
       - dev
 
-env:
-  SANITY_PROJECT_ID: ${{ env.SANITY_PROJECT_ID }}
-  SANITY_DATASET: ${{ env.SANITY_DATASET }}
-  SANITY_READ_TOKEN: ${{ env.SANITY_READ_TOKEN }}
+
 
 jobs:
   build:
@@ -19,3 +16,7 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           working-dir: ./web
+        env:
+          SANITY_PROJECT_ID: ${{ SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ SANITY_DATASET }}
+          SANITY_READ_TOKEN: ${{ SANITY_READ_TOKEN }}
