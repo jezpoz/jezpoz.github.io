@@ -9,15 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@v2
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          working-dir: ./web
-          SANITY_PROJECT_ID: ${{ env.jezpoz-github-page.SANITY_PROJECT_ID }}
-          SANITY_DATASET: ${{ env.jezpoz-github-page.SANITY_DATASET }}
-          SANITY_READ_TOKEN: ${{ env.jezpoz-github-page.SANITY_READ_TOKEN }}
+      #- uses: actions/checkout@v1
+      #- uses: enriikke/gatsby-gh-pages-action@v2
+      #  with:
+      #    access-token: ${{ secrets.ACCESS_TOKEN }}
+      #    working-dir: ./web
+      #    SANITY_PROJECT_ID: ${{ env.jezpoz-github-page.SANITY_PROJECT_ID }}
+      #    SANITY_DATASET: ${{ env.jezpoz-github-page.SANITY_DATASET }}
+      #    SANITY_READ_TOKEN: ${{ env.jezpoz-github-page.SANITY_READ_TOKEN }}
       - name: Step 1
         run: |
           echo ${{ env.jezpoz-github-page.SANITY_PROJECT_ID }}
-          echo ${{ SANITY_PROJECT_ID }}
