@@ -20,5 +20,4 @@ jobs:
       - name: Step 1
         run: |
           echo ${{ env.jezpoz-github-page.SANITY_PROJECT_ID }}
-          echo ${{ jezpoz-github-page.SANITY_PROJECT_ID }}
           echo ${{ SANITY_PROJECT_ID }}
