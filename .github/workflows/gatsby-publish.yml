@@ -6,6 +6,10 @@ on:
       - dev
 
 jobs:
+  env:
+    SANITY_PROJECT_ID: ${{ env.SANITY_PROJECT_ID }}
+    SANITY_DATASET: ${{ env.SANITY_DATASET }}
+    SANITY_READ_TOKEN: ${{ env.SANITY_READ_TOKEN }}
   build:
     runs-on: ubuntu-latest
     steps:
