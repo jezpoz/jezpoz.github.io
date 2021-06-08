@@ -5,13 +5,14 @@ on:
     branches:
       - dev
 
+env:
+  SANITY_PROJECT_ID: ${{ env.SANITY_PROJECT_ID }}
+  SANITY_DATASET: ${{ env.SANITY_DATASET }}
+  SANITY_READ_TOKEN: ${{ env.SANITY_READ_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      SANITY_PROJECT_ID: ${{ env.SANITY_PROJECT_ID }}
-      SANITY_DATASET: ${{ env.SANITY_DATASET }}
-      SANITY_READ_TOKEN: ${{ env.SANITY_READ_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - uses: enriikke/gatsby-gh-pages-action@v2
