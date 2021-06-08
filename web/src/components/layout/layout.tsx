@@ -31,9 +31,9 @@ const Layout = ({ children }) => {
       <div className="main-content-container">
         <main>{children}</main>
         <footer>
-          <a href="https://twitter.com/jezpoz" target="_blank" className="twitter-icon-container" ><IconTwitter /></a>
-          <a href="https://github.com/jezpoz" target="_blank" ><IconGithub /></a>
-          <a href="mailto:jesfor94@gmail.com" ><IconEmail /></a>
+          <a href="https://twitter.com/jezpoz" target="_blank" className="twitter-icon-container" rel="noopener"><IconTwitter /></a>
+          <a href="https://github.com/jezpoz" target="_blank" rel="noopener"><IconGithub /></a>
+          <a href="mailto:jesfor94@gmail.com" target="_blank" rel="noopener"><IconEmail /></a>
         </footer>
       </div>
     </>
