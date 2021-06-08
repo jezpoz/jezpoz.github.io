@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "api": {
+    "projectId": "exu9upm1",
+    "dataset": "production"
+  },
+  "project": {
+    "name": "jezpoz.github.io"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema.js"
+    }
+  ]
+}
