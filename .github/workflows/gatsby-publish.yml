@@ -14,6 +14,7 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           working-dir: ./web
+        env: 
           SANITY_PROJECT_ID: exu9upm1
           SANITY_DATASET: production
       #    SANITY_READ_TOKEN:
