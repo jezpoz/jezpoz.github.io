@@ -1,7 +1,7 @@
 name: Gatsby Publish
 
 on:
-  pull_request:
+  push:
     branches:
       - dev
 
@@ -14,4 +14,3 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           working-dir: ./web
-          skip-publish: true
